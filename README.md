@@ -23,18 +23,6 @@ A Chrome extension that extracts content from public Notion pages and exports it
 4. Click "Load unpacked" and select the extension folder
 5. The extension icon should appear in your toolbar
 
-### Adding Icons (Optional)
-
-The extension references icon files that you'll need to add to the `icons/` folder:
-- `icon16.png` (16x16 pixels)
-- `icon48.png` (48x48 pixels) 
-- `icon128.png` (128x128 pixels)
-- `icon16-disabled.png` (16x16 pixels, grayed out)
-- `icon48-disabled.png` (48x48 pixels, grayed out)
-- `icon128-disabled.png` (128x128 pixels, grayed out)
-
-You can create simple icons or use any 📝 emoji-style icons for testing.
-
 ## Usage
 
 1. Navigate to any public Notion page (e.g., `https://yoursite.notion.site/page-title`)
