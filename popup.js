@@ -17,7 +17,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       exportBtn.textContent = 'Extracting...';
       showStatus('Analyzing page content...', 'info');
 
-      // Execute the content script to extract content
+      // First, inject the content script if not already injected
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['content.js']
+      });
+
+      // Then execute the extraction
       const [result] = await chrome.scripting.executeScript({
         target: { tabId: tab.id },
         function: extractNotionContent,
@@ -52,6 +58,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 // This function will be injected into the page
 function extractNotionContent() {
   try {
+    // Check if NotionContentExtractor is available
+    if (typeof NotionContentExtractor === 'undefined') {
+      throw new Error('NotionContentExtractor is not loaded properly');
+    }
+
     const extractor = new NotionContentExtractor();
     const markdown = extractor.extractToMarkdown();
     
